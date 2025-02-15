@@ -1,0 +1,90 @@
+* {
+   font-family: sans-serif;
+   outline: 0;
+   padding: 0;
+}
+
+#erro {
+   position: absolute;
+   top: 0%;
+   color: red;
+   display: none;
+}
+
+@keyframes ScaleBody {
+   0% { 
+     background-position: 0% 50%;
+   }
+   50% { 
+     background-position: 100% 50%; 
+   }
+   100% { 
+     background-position: 0% 50%; 
+   }
+ }
+ 
+ body {
+   background: linear-gradient(270deg, rgb(0, 89, 255), rgb(0, 247, 255)); 
+   background-size: 200% 200%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   min-height: 100vh;
+   align-items: center;
+   animation: ScaleBody 3s ease infinite;
+ }
+
+section.div {
+   border: 2.5px solid;
+   background-color: white;
+   transform: scale(1%);
+   border-radius: 10px;
+   overflow: hidden;
+   animation: Scale 0.5s forwards ease;
+}
+
+section.div input[type="text"]:hover,
+section.div input[type="password"]:hover,
+section.div input[type="email"]:hover,
+section.div input[type="tel"]:hover,
+section.div input[type="date"]:hover {
+   border: 1.5px solid;
+   border-radius: 2px;
+}
+
+.button {
+   cursor: pointer;
+   background: linear-gradient(to right, rgb(158, 197, 255), rgb(114, 114, 247));
+   border: 0;
+   border-radius: 5px;
+   position: absolute;
+   top: 93%;
+   left: 35%;
+}
+
+.button:hover {
+   animation: scalebutton 0.5s ease forwards;
+}
+
+@keyframes Scale {
+   from {
+      scale: 1%;
+   }
+   to {
+      scale: 20000%;
+   }
+}
+
+@keyframes scalebutton {
+   from {
+       transform: scale(1);
+   }
+   to {
+       transform: scale(1.25);
+   }
+}
+
+
+
+
+

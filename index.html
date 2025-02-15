@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login | Universe </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1 id="erro">Password: </h1>
+        <section class="div">
+            <h1>Sign up</h1>
+            <form name="Form" id="Iform" action="" method="post" autocomplete="on">
+                <p><label for="inome">Nome:</label>
+                <input type="text" name="nome" id="inome" required></p>
+                <p><label for="iemail">Email:</label>
+                <input type="email" name="email" id="iemail" required></p>
+                <p><label for="isenha">Senha:</label>
+                <input type="password" name="senha" id="isenha" required></p>
+                <p><label for="inas">Nasc:</label>
+                <input type="date" name="nas" id="inas" required></p>
+                <p><label for="itel">Tel:</label>
+                <input type="tel" name="tel" id="itel" placeholder="(00) 00000-0000" maxlength="15" required><br></p>
+                <br>
+                <input type="submit" name="cadastrar" id="button" value="Cadastar" class="button" onsubmit="Submit()">
+            </form>
+        </section>
+
+        <script>
+            //elements
+            const Nometxt = document.getElementById('inome');
+            const Form = document.getElementById('Iform')
+            const Senhatxt = document.getElementById('isenha');
+            const Errotxt = document.getElementById('erro');
+
+            //variables
+            const randomNames = ['miguel', 'carlos', 'alesandre', 'gustavo', 'josé', 'maria', 'bruna', 'barbara'];
+            let aleatorio = randomNames[Math.floor(Math.random() * randomNames.length)];
+            const normalNumbers = ["1", "2", "3", "4", "5"]
+            const SuperStrings = [
+                "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/",
+                ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`",
+                "{", "|", "}", "~", "€", "©", "®", "™", "¥", "±", "¶", "§", "°", "²", 
+                "³", "÷", "≠", "≤", "≥", "∞", "√", "∆", "π", "≈", "⊗", "∑", "∫", "Ω", "←", "→", 
+                "↑", "↓", "↔", "↕", "⇐", "⇑", "⇓", "⇒", "⇔"
+            ];
+
+            //configurations (functions.....)
+
+            Nometxt.placeholder = aleatorio
+
+            Form.addEventListener("submit", (evt) => {
+                let Senha = Senhatxt.value
+
+                let filter = normalNumbers.some(num => Senha.includes(num))
+                let Superfilter = SuperStrings.some(num => Senha.includes(num))
+
+                if (Senha.length < 8 || filter) {
+                    evt.preventDefault();
+                    Errotxt.style.display = 'block';
+                    Errotxt.innerText = "Força da senha: Fraca"
+                } else if (Senha.length >= 8 && Senha.length < 11 && (filter || Superfilter)) {
+                    evt.preventDefault();
+                    Errotxt.style.display = 'block';
+                    Errotxt.innerHTML = "Força da senha: <span style='color: yellow;'>Média</span>"
+                } else if (Senha.length > 11 && Superfilter) {
+                    return true
+                }
+            })
+        </script>
+
+        </body>
+</html>
